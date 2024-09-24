@@ -1,0 +1,273 @@
+
+.b-example-divider{
+    background-color:#0e2e50 ;
+    padding-top: 20px;
+    height: 120px;
+}
+
+.main-content {
+    background-color: #ffffff;
+   
+}
+.bluetheme{
+    color:#0b2642 ;
+    font-weight: bold;
+}
+
+
+.aboutus{
+    background-image: url(../images/img5.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    height: auto;
+    box-shadow: 0 0 10px rgb(44, 43, 43);
+    color: white;
+}
+.img{
+    width: 70%;
+    overflow: hidden;
+}
+.img img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+
+:root {
+    --clr-bright-white: #ffffff; 
+}
+
+.sub {
+    background-color: rgba(233, 239, 241, 0.734);
+    color:#0b2642 ;
+    filter: opacity(0.9); 
+    text-align: center;
+    height: auto;
+    box-shadow: 0 0 10px rgb(44, 43, 43);
+    transition: all 0.3s;
+}
+
+.sub:hover {
+    transform: translateY(-5px);
+    background-color: var(--clr-bright-white); 
+    filter: none;
+}
+
+.course {
+    background-color: rgba(233, 239, 241, 0.734); 
+    text-align: center;
+    height: auto;
+    box-shadow: 0 0 10px rgb(44, 43, 43);
+    transition: all 0.3s;
+}
+
+.course:hover {
+    transform: translateY(-5px);
+    filter: none;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.coursedet{
+    float:left;
+    text-align: left;
+}
+
+.course_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+    margin: auto;
+    max-width: 100%; /* Change as needed */
+    padding: 0; /* Ensure no extra padding */
+}
+.sub.container:hover {
+    transform: translateY(-5px);
+}
+.top-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sub.container:hover .top-image {
+    transform: scale(1.05);
+}
+.btn-danger {
+
+    margin-top: 10px;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+  }
+  
+  .footer a {
+    color: white;
+  }
+  .sticky-button {
+    position: fixed; 
+    bottom: 20px;   
+    right: 20px;    
+    z-index: 9999;   
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px 15px; 
+    border-radius: 5px;
+    text-decoration: none; 
+    font-size: 16px; 
+}
+
+.sticky-button i {
+    margin-right: 5px; 
+}
+
+
+.carousel-item h5{
+    
+    font-weight: bolder;
+}
+.carousel-item img {
+    height: 90vh; 
+    object-fit: cover;
+  }
+
+
+  .Marquee-text h5 {
+    color: #ff1100; /* Change text color to match your theme */
+    font-size: 1.2rem; /* Adjust font size for visibility */
+    font-weight: bold; /* Make the text bold */
+    text-align: center; /* Center align the text */
+    background-color: #fcf80c; /* Background color behind the marquee */
+    padding: 10px; /* Add some padding */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Apply a subtle shadow for depth */
+    margin-bottom: 20px; /* Space below the marquee */
+  }
+  
+  
+  .marquee-text {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .marquee-text h3 {
+    display: inline-block;
+    white-space: nowrap;
+    animation: smoothScroll 15s linear infinite; /* Adjust the speed with the duration (15s) */
+  }
+  
+
+  * {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Header animations */
+  .b-example-divider {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Navigation link hover effect */
+  .nav-link {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Smooth button transitions */
+  button, .btn {
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  button:hover, .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Carousel transitions */
+  .carousel-item {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  /* About Us section animations */
+  .aboutus {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .sub {
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .sub:hover {
+    transform: translateY(-5px);
+    background-color: var(--clr-bright-white);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Course container animations */
+  .course_container {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .sub.container {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+
+  .sticky-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff; /* Green background */
+    color: #ff00bf;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .sticky-btn:hover {
+    background-color: #7f2188; /* Darker green on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }

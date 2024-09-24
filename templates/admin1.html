@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+
+{% block title %}TAMS Admin Dashbaord{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/newstle.css') }}">
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="section activity-feed">
+                    <h1>ADMIN / Dashboard</h1>
+                    <div class="button-container">
+                        <a href="{{ url_for('list_enquiries') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            View Enquiries
+                        </a>
+                    </div>
+                </div>
+
+                <div class="insights">
+                    <div class="sales">
+                        <span class="material-icons">analytics</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3><a href="{{ url_for('list_users') }}">Users</a></h3>
+                                <h1>{{ user_count }}</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36" class="user-progress"></circle>
+                                </svg>
+                                <div class="number">
+                                    <p>{{ user_percentage }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <div class="expenses">
+                        <span class="material-icons">bar_chart</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3><a href="{{ url_for('list_courses') }}">Courses</a></h3>
+                                <h1>{{ course_count }}</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36" class="course-progress"></circle>
+                                </svg>
+                                <div class="number">
+                                    <p>{{ course_percentage }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+
+                    <div class="income">
+                        <span class="material-icons">stacked_line_chart</span>
+                        <div class="middle">
+                            <div class="left">
+                                <h3><a href="{{ url_for('list_enquiries') }}">Enquiries</a></h3>
+                                <h1>{{ pending_enquiries }}</h1>
+                            </div>
+                            <div class="progress">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36" class="enquiry-progress"></circle>
+                                </svg>
+                                <div class="number">
+                                    <p>{{ enquiry_percentage }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <small><a href="{{ url_for('list_enquiries') }}">Manage Enquiries</a></small> -->
+                    </div>
+                </div>
+
+            <div class="calendar">
+                    <div id="calendar"></div>
+                </div>
+
+                <!-- <div class="chart">
+                    <canvas id="lineChart"></canvas>
+                </div>  -->
+
+                <!-- <div class="pie-chart-container" style="background-color:white;  border-radius: 8px;
+   
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                padding: 20px;width: 240px; height: 240px; position: absolute; bottom: -160px; right: 50px;">
+                    <canvas id="activityPieChart"></canvas>
+                </div>    -->
+
+                <div class="dashboard-chart">
+                
+                    <div class="bar-chart-container" style="background-color:white;  border-radius: 8px;
+   
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    padding: 20px;width: 400px; height: 250px; position: absolute; bottom: -200px; right: 35px;">
+                        <canvas id="activityBarChart"></canvas>
+                    </div>
+                </div>
+                <div class="recent-activities">
+                    <h3>Recent Activities</h3>
+                    <ul class="mdl-list">
+                        {% if recent_user %}
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-icon">person</i>
+                                New user registered: {{ recent_user.username }}
+                            </span>
+                            <span class="mdl-list__item-secondary-content">
+                                <span class="mdl-list__item-secondary-info">{{ user_time_ago }}</span>
+                            </span>
+                        </li>
+                        {% endif %}
+                        
+                       {% if recent_course %}
+    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-icon">school</i>
+            New course added: {{ recent_course.course_name|default('Unnamed Course', true) }}
+        </span>
+        <span class="mdl-list__item-secondary-content">
+            <span class="mdl-list__item-secondary-info">
+                {% if course_time_ago %}
+                    {{ course_time_ago }}
+                {% else %}
+                    Time unknown
+                {% endif %}
+            </span>
+        </span>
+    </li>
+{% else %}
+    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-icon">school</i>
+            No courses added yet
+        </span>
+    </li>
+{% endif %}
+                        
+                        {% if recent_enquiry %}
+                        <li class="mdl-list__item">
+                            <span class="mdl-list__item-primary-content">
+                                <i class="material-icons mdl-list__item-icon">forum</i>
+                                New enquiry received: {{ recent_enquiry.enquiry_text[:30] }}...
+                            </span>
+                            <span class="mdl-list__item-secondary-content">
+                                <span class="mdl-list__item-secondary-info">{{ enquiry_time_ago }}</span>
+                            </span>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+              
+                    
+                </div>
+            </main>
+        <div>
+    
+        </div>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+    function setProgress(className, percentage) {
+        const circle = document.querySelector(className);
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference - (percentage / 100) * circumference;
+    }
+
+    setProgress('.user-progress', {{ user_percentage }});
+    setProgress('.course-progress', {{ course_percentage }});
+    setProgress('.enquiry-progress', {{ enquiry_percentage }});
+
+    
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('activityBarChart').getContext('2d');
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Users', 'Courses', 'Enquiries'],
+                datasets: [{
+                    label: 'Count',
+                    data: [{{ user_count }}, {{ course_count }}, {{ pending_enquiries }}],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(75, 192, 192, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Activity Distribution'
+                    }
+                }
+            }
+        });
+    });
+    </script>
+<div class="mdl-mini-footer">
+    <div class="mdl-mini-footer__left-section">
+        <div class="mdl-logo" style="color: black;">SAP Admin Dashboard</div>
+        <ul class="mdl-mini-footer__link-list">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Privacy & Terms</a></li>
+        </ul>
+    </div>
+</div>
+    {% endblock %}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Add course{% endblock %}
+
+{% block content %}
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <section class="activity-feed">
+                    <h4><b>ADMIN / Add Course</b></h4>
+                    <div class="button-container">
+                        <a href="{{ url_for('list_courses') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            View Courses
+                        </a>
+                    </div>
+                    </div>    </section>
+             
+                    <H4><b>ADD COURSE</b></H4>
+                
+                    <div class="form-container">
+         
+                        <form method="POST" enctype="multipart/form-data" onsubmit="return validateForm(this)">
+                            {{ form.hidden_tag() }}
+                        
+                            <div class="name-group">
+                                <div class="input-group">
+                                    {{ form.course_code.label }}
+                                    {{ form.course_code(class="form-control") }}
+                                    <p id="course_code_error" class="error-message"></p>
+                                </div>
+                        
+                                <div class="input-group">
+                                    {{ form.course_name.label }}
+                                    {{ form.course_name(class="form-control") }}
+                                    <p id="course_name_error" class="error-message"></p>
+                                </div>
+                            </div>
+                        
+                            <div class="name-group">
+                                <div class="input-group">
+                                    {{ form.course_image.label }}
+                                    
+                                    {{ form.course_image(class="form-control") }}
+                                    <p id="course_image_error" class="error-message"></p>
+                                </div>
+
+                        
+                                <div class="input-group">
+                                    {{ form.description.label }}
+                                    {{ form.description(class="form-control") }}
+                                    <p id="description_error" class="error-message"></p>
+                                </div>
+                            </div>
+                        
+                            <div class="name-group">
+                                <div class="input-group">
+                                    {{ form.duration.label }}
+                                    {{ form.duration(class="form-control") }}
+                                    <p id="duration_error" class="error-message"></p>
+                                </div>
+                        
+                                <div class="input-group">
+                                    {{ form.fees.label }}
+                                    {{ form.fees(class="form-control") }}
+                                    <p id="fees_error" class="error-message"></p>
+                                </div>
+                            </div>
+                        
+                            <div class="name-group">
+                                <div class="input-group">
+                                    {{ form.qualification_id.label }}
+                                    {{ form.qualification_id(class="form-control") }}
+                                </div>
+                                <div class="input-group">
+                                    {{ form.modules.label }}
+                                    {{ form.modules(class="form-control") }}
+                                    <p id="modules_error" class="error-message"></p>
+                                </div>
+                            </div>
+                        
+                            {{ form.submit(class="btn btn-primary") }}
+                            <input type="reset" value="Reset">
+
+                        </form>
+                    </div>
+                    
+                    <br><br><br><br>
+                    <footer class="mdl-mini-footer">
+                        <div class="mdl-mini-footer__left-section">
+                            <div class="mdl-logo" style="color: black;">TAMS Admin Dashboard</div>
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Privacy & Terms</a></li>
+                            </ul>
+                        </div>
+                    </footer>
+
+              
+                    <script src="{{ url_for('static', filename='js/script.js') }}/"></script>
+                    <script src="{{ url_for('static', filename='js/addcourse.js') }}"></script>
+
+
+{% endblock %}

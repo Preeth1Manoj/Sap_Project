@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+    
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <section class="activity-feed">
+                    <h4><b>ADMIN / Edit User</b></h4>
+                    <div class="button-container">
+                      <a href="{{ url_for('list_users') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                          View Users
+                      </a>
+                  </div>     </section>
+             
+               
+
+            
+                    <H4><b>EDIT USERS</b></H4>
+                
+                
+                    <div class="form-container">
+                      <form method="post" action="{{ url_for('edit_user', id=user.user_id) }}" onsubmit="return myformvalfn(this)">
+                        {{ form.hidden_tag() }}
+                        <div class="name-group">
+                            <div class="input-group">
+                                {{ form.first_name.label }}
+                                {{ form.first_name(id="txtfirstname", placeholder="First Name") }}
+                                {% if form.first_name.errors %}
+                                    <p class="error">{{ form.first_name.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="input-group">
+                                {{ form.last_name.label }}
+                                {{ form.last_name(id="txtlastname", placeholder="Last Name") }}
+                                {% if form.last_name.errors %}
+                                    <p class="error">{{ form.last_name.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+        
+                        <div class="name-group">
+                            <div class="input-group">
+                                {{ form.email.label }}
+                                {{ form.email(id="txtemail", placeholder="Email Address") }}
+                                {% if form.email.errors %}
+                                    <p class="error">{{ form.email.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="input-group">
+                                {{ form.phone.label }}
+                                {{ form.phone(id="txtphnum", placeholder="Phone Number") }}
+                                {% if form.phone.errors %}
+                                    <p class="error">{{ form.phone.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="name-group">
+                            <div class="input-group">
+                                {{ form.age.label }}
+                                {{ form.age(id="txtage", placeholder="Age") }}
+                                {% if form.age.errors %}
+                                    <p class="error">{{ form.age.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="input-group">
+                                {{ form.passout_year.label }}
+                                {{ form.passout_year(id="txtyear") }}
+                                {% if form.passout_year.errors %}
+                                    <p class="error">{{ form.passout_year.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+        
+                        <div class="name-group">
+                            <div class="input-group">
+                                {{ form.qualification_id.label }}
+                                {{ form.qualification_id(id="txtqual") }}
+                                {% if form.qualification_id.errors %}
+                                    <p class="error">{{ form.qualification_id.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="input-group">
+                                {{ form.address.label }}
+                                {{ form.address(id="txtaddress", placeholder="Address") }}
+                                {% if form.address.errors %}
+                                    <p class="error">{{ form.address.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+        
+                        <div class="name-group">
+                            <div class="input-group">
+                                {{ form.username.label }}
+                                {{ form.username(id="txtuser", placeholder="Username") }}
+                                {% if form.username.errors %}
+                                    <p class="error">{{ form.username.errors[0] }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="input-group">
+                                {{ form.role.label }}
+                                {{ form.role(id="txtrole") }}
+                                {% if form.role.errors %}
+                                    <p class="error">{{ form.role.errors[0] }}</p>
+                                {% endif %}
+                            </div>  </div>
+                            <div class="name-group">
+                                <div class="input-group">
+                                    {{ form.password.label }}
+                                    {{ form.password(id="txtpwd", placeholder="Password") }}
+                                    {% if form.password.errors %}
+                                        <p class="error">{{ form.password.errors[0] }}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="input-group">
+                                    {{ form.confirm_password.label }}
+                                    {{ form.confirm_password(id="txtconfirmpwd", placeholder="Confirm Password") }}
+                                    {% if form.confirm_password.errors %}
+                                        <p class="error">{{ form.confirm_password.errors[0] }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                        
+                          
+                          {{ form.submit(value="Update User") }}
+                          <input type="reset" value="Clear" id="resetButton">
+                      </form>
+                  </div>
+            </div>
+            <br><br><br><br>
+                <footer class="mdl-mini-footer">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo" style="color: black;">TAMS Admin Dashboard</div>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+                </footer>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/adduser.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock %}

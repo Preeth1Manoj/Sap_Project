@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://kit.fontawesome.com/f17626030c.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+               
+                <span class="mdl-layout-title"> <button class="mdl-button mdl-js-button mdl-button--icon" id="menu-toggle">
+                    <i class="material-icons">menu</i>
+                </button>Dashboard</span>
+                
+            <div class="header-right">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-profile">
+                    <img src="/img/admin.png" alt="User Avatar" class="user-avatar">
+                    <span class="username">Admin</span>
+                </div>
+                <div class="notifications">
+                  <div class="dropdown">
+                  
+                    <i class="fas fa-chevron-down"></i>
+
+                    <div class="dropdown-content">
+                        <a href="profile.html">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                      
+                        <div class="theme-toggler">
+                            
+                             <a> <i class="fas fa-moon"></i>
+                            Dark mode</a>
+                        </div><hr>
+                        <a href="adminlogin.html">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+
+                
+                </div>
+            </div>
+            </div>
+        </header>
+    
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title"> <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>TAMS</span>
+              </a></span>
+              <nav class="sidebar">
+                <ul>
+                    <br>
+                    <li><a href="admin1.html" ><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li>
+                      <a href="#" class="dropdown-toggle"><i class="fas fa-users"></i> User Management <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                      <ul class="dropdown-menu" style="display: none;">
+                          <li><a href="users.html">User List</a></li>
+                          <li><a href="adduser.html">Add User</a></li>
+                          <li><a href="#activity-log">Activity Log</a></li>
+                      </ul>
+                  </li>
+                    <li><a href="course.html" ><i class="fas fa-book"></i> Course Management</a></li>
+                    <li><a href="enquiry.html" class="active"><i class="fas fa-question-circle"></i> Enquiry Status</a></li>
+                    <li><a href="profile.html"><i class="fas fa-user-cog"></i>Account Settings</a></li>
+                  </ul>
+            </nav>
+          
+
+        </div>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            .icon-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+            }
+            .edit-icon {
+                color: #4CAF50;
+            }
+            .delete-icon {
+                color: #f44336;
+            }
+        </style>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <section class="activity-feed">
+                    <h4><b>ADMIN / ENQUIRY STATUS</b></h4>
+                    <div class="button-container">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="location.href='admin1.html'">
+                            Filter
+                        </button>   
+                       
+                    </div>    </section>
+
+                    <H4><b>Enquiries</b></H4>
+                
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>EnquiryId</th>
+                            <th>UserId</th>
+                            <th>Username</th>
+                            <th>Course</th>
+                            <th>course id</th>
+                            <th>datetime</th>
+                            <th>Enquiry</th>
+                            <th> Response</th>
+                            
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>e101</td>
+                            <td>12</td>
+                            <td>john@</td>
+                            <td>ML</td>
+                            <td>CS101</td>
+                            <td>2023-01-15 10.00</td>
+                            <td>module no:</td>
+                            <td> <div style="display: flex; align-items: center;">
+                              <button class="icon-button" onclick="showResponseModal(this)">
+                                <i class="fas fa-comment fa-lg " title="view response"></i>
+                              </button>
+                              <div style="flex-grow: 1; margin-left: 10px;">
+                                <textarea style="width: 100%;" title="Add Response"></textarea>
+                              </div>
+                              <button class="save-response" style="margin-left: 10px;" title="Save Response">Save</button>
+                            </div>
+                         
+                          </td>
+                          <td>
+                             <!--button class="icon-button disable-icon" onclick="disableRow(this)">
+                            <i class="fas fa-ban fa" title="Disable"></i>  -->
+                          <!-- </button> -->
+                
+                        
+                         
+                              <i class="fas fa-clock status-icon pending" title="Pending" onclick="changeStatus(this, 'pending')"></i>
+                              <i class="fas fa-check status-icon accepted" title="Accepted" onclick="changeStatus(this, 'accepted')"></i>
+                              <i class="fas fa-times status-icon rejected" title="Rejected" onclick="changeStatus(this, 'rejected')"></i>
+                              <i class="fas fa-trash status-icon deleted" title="Deleted" onclick="changeStatus(this, 'deleted')"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>e102</td>
+                            <td>13</td>
+                            <td>Anu</td>
+                            <td>Python</td>
+                            <td>CS102</td>
+                            <td>2023-01-15 10.00</td>
+                            <td>Free Certificates??</td>
+                            <td> 
+                              <div style="display: flex; align-items: center;">
+                              <button class="icon-button" onclick="showResponseModal(this)">
+                                <i class="fas fa-comment fa-lg " title="view response"></i>
+                              </button>
+                              <div style="flex-grow: 1; margin-left: 10px;">
+                                <textarea style="width: 100%;" title="Add Response"></textarea>
+                              </div>
+                              <button class="save-response" style="margin-left: 10px;" title="Save Response">Save</button>
+                            </div>
+                         
+                          </td>
+                
+                          <td> 
+                            <!--button class="icon-button disable-icon" onclick="disableRow(this)">
+                            <i class="fas fa-ban fa" title="Disable"></i>
+                          </button> -->
+                           
+                            
+                              <i class="fas fa-clock status-icon pending" title="Pending" onclick="changeStatus(this, 'pending')"></i>
+                        <i class="fas fa-check status-icon accepted" title="Accepted" onclick="changeStatus(this, 'accepted')"></i>
+                        <i class="fas fa-times status-icon rejected" title="Rejected" onclick="changeStatus(this, 'rejected')"></i>
+                        <i class="fas fa-trash status-icon deleted" title="Deleted" onclick="changeStatus(this, 'deleted')"></i>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>e103</td>
+                            <td>14</td>
+                            <td>Janu</td>
+                            <td>DB</td>
+                            <td>DC101</td>
+                            <td>2023-01-15 10.00</td>
+                            <td>Would notes  be provided</td>
+                            <td>
+                              <div style="display: flex; align-items: center;">
+                                <button class="icon-button" onclick="showResponseModal(this)">
+                                  <i class="fas fa-comment fa-lg " title="view response"></i>
+                                </button>
+                                <div style="flex-grow: 1; margin-left: 10px;">
+                                  <textarea style="width: 100%;" title="Add Response"></textarea>
+                                </div>
+                                <button class="save-response" style="margin-left: 10px;" title="Save Response">Save</button>
+                              </div>
+                           
+                            </td>
+                            <td>
+                               <!--button class="icon-button disable-icon" onclick="disableRow(this)">
+                              <i class="fas fa-ban fa" title="Disable"></i>
+                            </button> -->
+                         
+                      
+                              <i class="fas fa-clock status-icon pending" title="Pending" onclick="changeStatus(this, 'pending')"></i>
+                              <i class="fas fa-check status-icon accepted" title="Accepted" onclick="changeStatus(this, 'accepted')"></i>
+                              <i class="fas fa-times status-icon rejected" title="Rejected" onclick="changeStatus(this, 'rejected')"></i>
+                              <i class="fas fa-trash status-icon deleted" title="Deleted" onclick="changeStatus(this, 'deleted')"></i>
+                          </td>
+                        </tr>
+                    </table>
+      
+              
+            </div>
+            <br><br><br><br>
+                <footer class="mdl-mini-footer">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo" style="color: black;">TAMS Admin Dashboard</div>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+                </footer>
+        </main>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

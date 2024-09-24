@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
+    <script>
+        function updateCourseCode() {
+            var courseSelect = document.getElementById("{{ form.course.id }}");
+            var courseCodeField = document.getElementById("{{ form.course_code.id }}");
+
+            // Find the selected option
+            var selectedOption = courseSelect.options[courseSelect.selectedIndex];
+            courseCodeField.value = selectedOption.getAttribute("data-course-code") || '';
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Enquiry!</h2>
+        <form method="POST" action="/enquire_now" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+        
+            <label for="{{ form.email.id }}">{{ form.email.label }}</label>
+            {{ form.email(class="form-control", placeholder="Enter your email") }}
+        
+            <label for="{{ form.course.id }}">{{ form.course.label }}</label>
+            {{ form.course(class="form-control", readonly=True) }}  
+        
+            <label for="{{ form.course_code.id }}">{{ form.course_code.label }}</label>
+            {{ form.course_code(class="form-control", readonly=True) }}  <!-- Readonly field for course code -->
+        
+            <label for="{{ form.enquiry_text.id }}">{{ form.enquiry_text.label }}</label>
+            {{ form.enquiry_text(class="form-control", placeholder="Enter your message") }}
+        
+            <input type="submit" value="Submit" class="btn btn-primary">
+            <input type="reset" value="Clear" id="resetButton" class="btn btn-secondary">
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/registration.js') }}"></script>
+</body>
+</html>

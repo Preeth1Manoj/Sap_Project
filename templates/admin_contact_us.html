@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Inquiries{% endblock %}
+
+{% block content %}
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="section activity-feed">
+                    <h4><b>ADMIN / Contact us Entries</b></h4>
+                    <div class="button-container">
+                        <a href="{{ url_for('admin_dashboard') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contact in contacts %}
+                        <tr>
+                            <td>{{ contact.contact_id }}</td>
+                            <td>{{ contact.name }}</td>
+                            <td>{{ contact.phone }}</td>
+                            <td>{{ contact.email }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+
+                <br><br><br><br>
+                    <footer class="mdl-mini-footer">
+                        <div class="mdl-mini-footer__left-section">
+                            <div class="mdl-logo" style="color: black;">SAP Admin Dashboard</div>
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Privacy & Terms</a></li>
+                            </ul>
+                        </div>
+                    </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock %}

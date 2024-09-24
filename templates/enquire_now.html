@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
+
+</head>
+<body>
+    <div class="form-container1">
+        <h2 id="enq">Enquiry !</h2>
+        <form method="POST" action="/enquirenow" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <label for="{{ form.email.id }}" id="en">{{ form.email.label }}</label>
+            {{ form.email(class="form-control", placeholder="Enter your email") }}
+            <p id="emailerror"></p>
+           
+            <label for="{{ form.course.id }}" id="en">{{ form.course.label }}</label>
+            <select name="{{ form.course.name }}" id="{{ form.course.id }}" class="form-control" onchange="updateCourseCode()">
+                <option value="" disabled selected>Select course</option>
+                {% for course in courses %}
+                    <option value="{{ course.course_id }}" data-course-code="{{ course.course_code }}">{{ course.course_name }}</option>
+                {% endfor %}
+            </select>
+            <p id="courseerror"></p>
+<br>
+
+            <label for="{{ form.enquiry_text.id }}" id="en">{{ form.enquiry_text.label }}</label>
+            {{ form.enquiry_text(class="form-control", rows="4") }}
+            <p id="addresserror"></p>
+<br>
+            <input type="submit" value="Submit" class="btn btn-primary">
+            <input type="reset" value="Clear" id="resetButton" class="btn btn-secondary">
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/registration.js') }}"></script>
+</body>
+</html>

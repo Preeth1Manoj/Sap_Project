@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Course{% endblock %}
+
+{% block content %}
+<main class="mdl-layout__content">
+    <div class="page-content">
+        <section class="activity-feed">
+            <h4><b>ADMIN / Edit Course</b></h4>
+            <div class="button-container">
+                <a href="{{ url_for('list_courses') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    View Courses
+                </a>
+            </div>
+        </section>
+
+        <h4><b>EDIT COURSE</b></h4>
+        <div class="form-container">
+            <form method="post" action="{{ url_for('edit_course', id=course.course_id) }}" onsubmit="return validateForm(this)" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                
+                <div class="name-group">
+                    <div class="input-group">
+                        <label for="course_code">Course Code:</label>
+                        {{ form.course_code(id="course_code") }}
+                        <p id="course_code_error" class="error-message"></p>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="course_image">Course Image:</label>
+                        {% if course.image_filename %}
+                            <p>Current image: {{ course.image_filename }}</p>
+                            <img src="{{ url_for('static', filename='course_images/' + course.image_filename) }}" alt="Current course image" style="max-width: 200px;">
+                        {% endif %}
+                        {{ form.course_image(id="course_image") }}
+                        <p id="course_image_error" class="error-message"></p>
+                    </div>
+                </div>
+                
+                <div class="name-group">
+                    <div class="input-group">
+                        <label for="course_name">Course Name:</label>
+                        {{ form.course_name(id="course_name") }}
+                        <p id="course_name_error" class="error-message"></p>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="description">Description:</label>
+                        {{ form.description(id="description") }}
+                        <p id="description_error" class="error-message"></p>
+                    </div>
+                </div>
+        
+                <div class="name-group">
+                    <div class="input-group">
+                        <label for="duration">Duration:</label>
+                        {{ form.duration(id="duration") }}
+                        <p id="duration_error" class="error-message"></p>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="fees">Fees:</label>
+                        {{ form.fees(id="fees") }}
+                        <p id="fees_error" class="error-message"></p>
+                    </div>
+                </div>
+            
+                <div class="name-group">
+                    <div class="input-group">
+                        <label for="qualifications">Qualifications:</label>
+                        {{ form.qualification_id(id="qualification") }}
+                        <p id="qualifications_error" class="error-message"></p>
+                    </div>
+        
+                    <div class="input-group">
+                        <label for="modules">Course Modules:</label>
+                        {{ form.modules(id="modules") }}
+                        <p id="modules_error" class="error-message"></p>
+                    </div>
+                </div>
+        
+                {{ form.submit(value="Submit") }}
+                <input type="reset" value="Reset" onclick="resetForm()">
+            </form>
+        </div>
+        
+        <br><br><br><br>
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo" style="color: black;">TAMS Admin Dashboard</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/addcourse.js') }}"></script>
+<script>
+// Additional JavaScript for edit course page
+function resetForm() {
+    document.querySelector('form').reset();
+    clearErrors();
+}
+</script>
+{% endblock %}

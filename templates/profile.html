@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+
+<div class="mdl-layout__content" role="main">
+    <div class="page-content">
+        <div class="section activity-feed">
+            <div class="flex justify-between items-center mb-4">
+                <h4 class="text-xl font-bold">ADMIN / Account Settings</h4>
+               
+            </div>
+            <div class="button-container">
+                <a href="{{ url_for('admin_dashboard') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                    Back to home
+                </a>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-8">
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <h2 class="text-2xl font-bold mb-4">Profile Information</h2>
+                <div class="profile-info">
+                    <div class="profile-field">
+                        <div class="profile-field-label">Username</div>
+                        <div class="profile-field-value">{{ current_user.username }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Password</div>
+                        <div class="profile-field-value">{{ current_user.password_hash[:7] + '*' * 4 if current_user.password_hash else '' }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Email</div>
+                        <div class="profile-field-value">{{ current_user.email }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">First Name</div>
+                        <div class="profile-field-value">{{ current_user.first_name }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Last Name</div>
+                        <div class="profile-field-value">{{ current_user.last_name }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Phone</div>
+                        <div class="profile-field-value">{{ current_user.phone }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Age</div>
+                        <div class="profile-field-value">{{ current_user.age }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Passout Year</div>
+                        <div class="profile-field-value">{{ current_user.passout_year }}</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Qualification</div>
+                        <div class="profile-field-value">Admin Qualification</div>
+                    </div>
+                    <div class="profile-field">
+                        <div class="profile-field-label">Role</div>
+                        <div class="profile-field-value">{{ current_user.role }}</div>
+                    </div>
+                    <div class="profile-field profile-field-address">
+                        <div class="profile-field-label">Address</div>
+                        <div class="profile-field-value">{{ current_user.address }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="mdl-mini-footer">
+        <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo" style="color: black;">SAP Admin Dashboard</div>
+            <ul class="mdl-mini-footer__link-list">
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Contact us!</h2>
+        <form method="POST" action="/contactus" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <label for="{{ form.name.id }}">{{ form.name.label }}</label>
+            {{ form.name(class="form-control", placeholder="Enter your name") }}
+            <p id="nameerror"></p>
+
+            <label for="{{ form.phone.id }}">{{ form.phone.label }}</label>
+            {{ form.phone(class="form-control", placeholder="Enter your phone") }}
+            <p id="phoneerror"></p>
+
+            <label for="{{ form.email.id }}">{{ form.email.label }}</label>
+            {{ form.email(class="form-control", placeholder="Enter your email") }}
+            <p id="emailerror"></p>
+
+
+            <input type="submit" value="Submit" class="btn btn-primary">
+            <input type="reset" value="Clear" id="resetButton" class="btn btn-secondary">
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/registration.js') }}"></script>
+</body>
+</html>

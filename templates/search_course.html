@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Homepage.css') }}">
+<body>
+    <div class="main-content">
+            <div class="b-example-divider">
+                <header class="p-3 header">
+                    <div class="container-fluid">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                            <!-- <img src="{{ url_for('static', filename='images/5249003.png') }}" width="50px" class="float-start"> -->
+                            <h2 class="float-start ms-3"> <i class="fas fa-graduation-cap"></i> SAP</h2>
+                        
+                        <ul class="nav col-12 col-lg-auto ms-lg-auto me-4 mb-2 justify-content-center mb-md-0">
+                        <li><a href="/userdashboard" class="nav-link px-2 text-light">About Us</a></li>
+                        <li><a href="/course" class="nav-link px-2 text-light">Courses</a></li>
+                        <li><a href="/FAQ" class="nav-link px-2 text-light">FAQs</a></li>
+                        </ul>
+                
+                        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex" role="search" action="{{ url_for('search') }}" method="get">
+                            <input type="search" name="query" class="form-control form-control-dark text-bg-light" placeholder="Search..." aria-label="Search">
+                            <button type="submit" class="btn btn-light mx-2">Search</button>
+                        </form>
+
+                        <div class="text-end">
+                            <div class="dropdown text-end">
+                                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <img src="{{ url_for('static', filename='images/5249003.png') }}" alt="mdo" width="32" height="32" class="rounded-circle">
+                                </a>
+                                <ul class="dropdown-menu text-small" style>
+                                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                                  <li><hr class="dropdown-divider"></li>
+                                  <li><a class="dropdown-item" href="#">My Enquiries</a></li>
+                                  <li><hr class="dropdown-divider"></li>
+                                  <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                </ul>
+                              </div>
+                          </div>
+                    </div>
+                    </div>
+                </header>
+            </div>
+
+
+            <div class="container-fluid col border-0 p-3 mt-5 "></div>
+                <div class="d-flex justify-content-centre mx-5 mb-4">
+                <div class="course_container">
+                {% for course in all_courses %}
+                <div class="sub container mt-3 mb-3 mx-3 p-3 bg-light">
+                    <div class="container-fluid border-0 mx-0">
+                        <img width="200" src="{{ url_for('course_image', course_id=course.course_id) }}" alt="{{ course.course_name }}" class="top-image">
+                    </div>
+                    <h3 class="bluetheme">{{course.course_name}}</h3><br>
+                    <hr>
+                    <p class="ms-2 me-2">{{course.description}}</p>
+                    <hr>
+                    <div class="coursedet">
+                        <nav>
+                        <ul>
+                            <li>Duration: {{course.duration}}</li>
+                            <li>Fees: Rs. {{course.fees}}/-</li>
+                            <li>Minimum qualification: {{course.qualification.qualification}}</li>
+                            <li>Modules : {{course.course_modules}} modules</li><br><br>
+                            <a href="/enquirenow"><button type="button" class="btn btn-danger">Enquire Now</button></a>
+                        </ul>
+                        </nav>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+    </div>
+
+    <div class="container-fluid col border-0 p-3 mt-5 ">
+        <h2 class="bluetheme display-5 fw-bold d-flex align-items-left mx-5 pb-2 text-decoration-underline">Popular Courses</h2><br>
+        <div class="d-flex justify-content-between mx-5 mb-4">
+            <div class="course_container">
+                {% for course, enquiry_count in popular_courses %}
+                <div class="sub container mt-3 mb-3 mx-3 p-3 bg-light">
+                    <div class="container-fluid border-0 mx-0">
+                        <img width="200" src="{{ url_for('course_image', course_id=course.course_id) }}" alt="{{ course.course_name }}" class="top-image">
+                    </div>
+                    <h3 class="bluetheme">{{course.course_name}}</h3><br>
+                    <hr>
+                    <p class="ms-2 me-2">{{course.description}}</p>
+                    <hr>
+                    <div class="coursedet">
+                        <nav>
+                            <ul>
+                                <li>Duration: {{course.duration}}</li>
+                                <li>Fees: Rs. {{course.fees}}/-</li>
+                                <li>Minimum qualification: {{course.qualification.qualification}}</li>
+                                <li>Modules : {{course.course_modules}} modules</li><br><br>
+                                <a href="{{ url_for('enquirenow', course_id=course.course_id, course_name=course.course_name, course_code=course.course_code) }}">
+                                    <button type="button" class="btn btn-danger">Enquire Now</button>
+                                </a>
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+            <div class="container-fluid col border-0 p-3 mt-5 ">
+                <h2 class="bluetheme display-5 fw-bold d-flex align-items-left mx-5 pb-2 text-decoration-underline">Recent Courses</h2><br>
+                <div class="d-flex justify-content-between mx-5 mb-4">
+                    <div class="course_container">
+                        {% for course in recent_courses %}
+                        <div class="sub container mt-3 mb-3 mx-3 p-3 bg-light">
+                            <div class="container-fluid border-0 mx-0">
+                                <img width="200" src="{{ url_for('course_image', course_id=course.course_id) }}" alt="{{ course.course_name }}" class="top-image">
+                            </div>
+                            <h3 class="bluetheme">{{course.course_name}}</h3><br>
+                            <hr>
+                            <p class="ms-2 me-2">{{course.description}}</p>
+                            <hr>
+                            <div class="coursedet">
+                                <nav>
+                                    <ul>
+                                        <li>Duration: {{course.duration}}</li>
+                                        <li>Fees: Rs. {{course.fees}}/-</li>
+                                        <li>Minimum qualification: {{course.qualification.qualification}}</li>
+                                        <li>Modules : {{course.course_modules}} modules</li><br><br>
+                                        <a href="/enquirenow"><button type="button" class="btn btn-danger">Enquire Now</button></a>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+            
+            <footer class="footer" style="background-color: #333; color: white;">
+                <div class="container">
+                  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                    <div class="col-md-4 d-flex align-items-center">
+                      <a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
+                        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                      </a>
+                      <span class="mb-3 mb-md-0 text-white">© 2024 SAP Learning Company, Inc</span>
+                    </div>
+                  
+                    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                      <li class="ms-3"><a class="text-white" href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a></li>
+                      <li class="ms-3"><a class="text-white" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+                      <li class="ms-3"><a class="text-white" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                    </ul>
+                  </footer>
+                </div>
+              </footer>
+  
+</div> 
+<!--Javascript-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
+</body>
+</html>

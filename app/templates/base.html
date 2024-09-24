@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adduser.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://kit.fontawesome.com/f17626030c.js" crossorigin="anonymous"></script>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title"> 
+                    <button class="mdl-button mdl-js-button mdl-button--icon" id="menu-toggle">
+                        <i class="material-icons">menu</i>
+                    </button>
+                    {% block header_title %}Dashboard{% endblock %}
+                </span>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search...">
+                    </div>
+                    <div class="user-profile">
+                        <img src="{{ url_for('static', filename='img/admin.png') }}" alt="User Avatar" class="user-avatar">
+                        <span class="username">Admin</span>
+                    </div>
+                    <div class="notifications">
+                        <div class="dropdown">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-content">
+                                <a href="{{ url_for('profile') }}">
+                                    <i class="fas fa-user"></i> Profile
+                                </a>
+                                <div class="theme-toggler">
+                                    <a> <i class="fas fa-moon"></i> Dark mode</a>
+                                </div><hr>
+                                <a href="{{ url_for('logout') }}">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title"> 
+                <a href="{{ url_for('admin_dashboard') }}" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>TAMS</span>
+                </a>
+            </span>
+            <nav class="sidebar">
+                <ul>
+                    <br>
+                    <li><a href="{{ url_for('admin_dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li>
+                        <a href="#" class="dropdown-toggle"><i class="fas fa-users"></i> User Management <i class="fas fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="dropdown-menu" style="display: none;">
+                            <li><a href="#">User List</a></li>
+                            <li><a href="#">Add User</a></li>
+                            <li><a href="#">Activity Log</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('list_courses') }}"><i class="fas fa-book"></i> Course Management</a></li>
+                    <li><a href="{{ url_for('list_enquiries') }}"><i class="fas fa-question-circle"></i> Enquiry Status</a></li>
+                    <li><a href="{{ url_for('profile') }}"><i class="fas fa-user-cog"></i>Account Settings</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <main class="mdl-layout__content">
+        
+                {% block content %}
+                {% endblock %}
+         
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}/"></script>
+
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

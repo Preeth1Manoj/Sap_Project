@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}TAMS Admin Dashbaord{% endblock %}
+
+{% block content %}
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <section class="activity-feed">
+                    <h4><b>ADMIN / ENQUIRY STATUS</b></h4>
+                    <div class="button-container">
+                        <a href="{{ url_for('admin_dashboard') }}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                            Back to home
+                        </a>
+                    </div>   </section>
+
+                    <H4><b>Enquiries</b></H4>
+                
+                    <table >
+                      <thead>
+                          <tr>
+                              <th>Enquiry ID</th>
+                              <th>User ID</th>
+                              <th>First Name</th>
+                              <th>Email</th>
+                              <th>Course Name</th>
+                              <th>Enquiry Text</th>
+                              <th>Status</th>
+                              <th>Response</th>
+                              <th>Created At</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for enquiry in enquiries %}
+                          <tr>
+                              <td>{{ enquiry.enquiry_id }}</td>
+                              <td>{{ enquiry.user_id }}</td>
+                              <td>{{ enquiry.user.first_name }}</td>
+                              <td>{{ enquiry.user.email }}</td>
+                    
+                              <td>{{ enquiry.course.course_name }}</td>
+                              <td>{{ enquiry.enquiry_text }}</td>
+                              <td>
+                                <form action="{{ url_for('update_enquiry_status', enquiry_id=enquiry.enquiry_id) }}" method="POST">
+                                    <select name="status" class="status-dropdown">
+                                        {% for status in enquiry_statuses %}
+                                            <option value="{{ status.enquiry_status }}" {% if enquiry.enquiry_status == status.enquiry_status_id %}selected{% endif %}>
+                                                {{ status.enquiry_status }}
+                                            </option>
+                                        {% endfor %}
+                                    </select> 
+                                    <button class="enqbtn" type="submit" ><small>Save Status</small></button>
+                                </form>
+                            </td>
+                              <td>
+                                  <form action="{{ url_for('update_enquiry_response', enquiry_id=enquiry.enquiry_id) }}" method="POST">
+                                      <textarea name="response" class="response-textarea" rows="3">{{ enquiry.response }}</textarea>
+                                      <button type="submit" class="enqbtn"><small>Save Response</small></button>
+                                  </form>
+                              </td>
+                              <td>{{ enquiry.created_at }}</td>
+                              <td>
+                                <form action="{{ url_for('delete_enquiry', enquiry_id=enquiry.enquiry_id) }}" method="POST" style="display: inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this enquiry?');">Delete</button>
+                                </form>
+                              </td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+      
+              
+            </div>
+            <br><br><br><br>
+                <footer class="mdl-mini-footer">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo" style="color: black;">SAP Admin Dashboard</div>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+                </footer>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/material.min.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% endblock %}

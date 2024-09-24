@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userdreamdashboard.css') }}">
+    <script src="https://kit.fontawesome.com/f17626030c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <!-- <img src="{{ url_for('static', filename='images/samplelogo.jpg') }}" alt="Insert logo" height="100px" width="100px"> -->
+            <h2>  <i class="fas fa-graduation-cap"></i> SAP</h2>
+        </div>
+        <div class="user-info">
+            <img src="{{ url_for('static', filename='images/user pfp.jpg') }}" alt="User Image">
+            <p>{{ current_user.first_name }} {{ current_user.last_name }}<br><span>User</span></p>
+        </div>
+        <ul class="menu">
+            <li><a href="/myuserdashboard" class="active"><i class="fa-solid fa-gauge-high fa-lg"></i> Dashboard</a></li>
+            <li><a href="/editprofile"><i class="fa-solid fa-user-pen fa-lg" style="color: #001842;"></i> Edit Profile</a></li>
+            <li><a href="/changepassword"><i class="fa-solid fa-lock fa-lg" style="color: #031430;"></i> Change Password</a></li>
+            <li><a href="/viewenquiriesuser"><i class="fa-solid fa-clipboard-question fa-lg" style="color: #020a17;"></i> View Enquiries</a></li>
+            <li><a href="/logout"><i class="fa-solid fa-right-from-bracket fa-lg" style="color: #06142d;"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-nav">
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="nav-icons">
+                <a href="/userdashboard">Home</a>
+                <a href="/userdashboard">About Us</a>
+                <a href="/course">Course</a>
+                <div class="user-profile">
+                    <img src="{{ url_for('static', filename='images/user pfp.jpg') }}" alt="{{ current_user.first_name }}">
+                    <p>{{ current_user.first_name }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="imagebody">
+            <div class="contentbody1">
+                <img src="{{ url_for('static', filename='images/user pfp.jpg') }}" alt="{{ current_user.first_name }}">
+                <br>
+                <p id="nameofuserprofile">Name:
+                    <input type="text" value="{{ current_user.first_name }} {{ current_user.last_name }}" id="inputofnameofuserprofile" readonly>
+                </p>
+                <p id="nameofuserprofile">Email:
+                    <input type="email" value="{{ current_user.email }}" id="inputofnameofuserprofile" readonly>
+                </p>
+            </div>
+
+            <div class="contentbody2">
+                <p id="phonenumberofuser">Phone No:
+                    <input type="tel" value="{{ current_user.phone }}" id="inputofphonenumberofuser" readonly>
+                </p>
+                <p id="userage">Age:
+                    <input type="number" value="{{ current_user.age }}" id="inputofuserage">
+                </p>                
+                <p id="useryearofpassout">Year of passout:
+                    <input type="text" value="{{ current_user.passout_year }}" id="inputofuseryearofpassout" readonly>
+                </p>
+                <p id="passwordofuser">Password:
+                    <input type="password" value="{{ current_user.password_hash }}" id="inputofuserpassword" readonly>
+                </p>
+                <p id="addressofuser">Address:
+                    <textarea id="inputofaddressofuser" rows="3">{{ current_user.address }}</textarea>
+                </p>
+                
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

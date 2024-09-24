@@ -1,0 +1,115 @@
+/* Container styling */
+.form-container {
+    background-color: #f6f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 26px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    color: #333;
+    font-weight: bold;
+}
+
+
+/* Input field styling */
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+input[type="password"],
+input[type="number"],
+input[type="date"] ,
+input[type="file"],input[type="time"]
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.input-group i {
+    position: relative;
+    left: 10px;
+    top: 35%;
+    
+    transform: translateY(-50%);
+  }
+  
+  .input-group input {
+    padding-left: 30px;
+  }
+/* Flexbox container for name fields */
+.name-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-group .input-group {
+    width: 48%;
+}
+
+/* Submit and Reset buttons styling */
+input[type="submit"], 
+input[type="reset"] {
+    width: 40%;
+    padding: 10px;
+    margin: 10px 4%;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Submit button specific styling */
+input[type="submit"] {
+    background-color: #28a745;
+}
+
+/* Reset button specific styling */
+input[type="reset"] {
+    background-color: #dc3545;
+}
+
+/* Button hover effects */
+input[type="submit"]:hover, 
+input[type="reset"]:hover {
+    opacity: 0.9;
+}
+
+/* Error message styling */
+p {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .name-group {
+        flex-direction: column;
+    }
+
+    .name-group .input-group {
+        width: 100%;
+    }
+
+    input[type="submit"], 
+    input[type="reset"] {
+        width: 100%;
+        margin: 20px 0;
+    }
+}

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+    
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <section class="activity-feed">
+                    <h4><b>ADMIN / List Users</b></h4>
+                    <div class="button-container">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="location.href='adduser.html'">
+                        Add User
+                        </button>   
+                       
+                    </div>    </section>
+                    <style>
+                        table {
+                            border-collapse: collapse;
+                            width: 100%;
+                        }
+                        th, td {
+                            border: 1px solid #ddd;
+                            padding: 8px;
+                            text-align: left;
+                        }
+                        th {
+                            background-color: #f2f2f2;
+                        }
+                        .icon-button {
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            padding: 5px;
+                        }
+                        .edit-icon {
+                            color: #4CAF50;
+                        }
+                        .delete-icon {
+                            color: #f44336;
+                        }
+                    </style>
+               
+
+                    <H4><b>LIST USERS</b></H4>
+                
+                    <table >
+                        <tr>
+                            <th></th>
+                            <th>User ID</th>
+                            <th>username</th>
+                            <th>Password</th>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>Created</th>
+                            <th>Disable</th>
+                            <th>Edit / Delete</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>CS101</td>
+                            <td>csprogrammer</td>
+                            <td>********</td>
+                            <td>John Doe</td>
+                            <td>john.doe@email.com</td>
+                            <td>555-0101</td>
+                            <td>123 Main St, Anytown, USA</td>
+                            <td>2023-01-15</td>
+                            <td><button class="icon-button disable-icon" onclick="disableRow(this)">
+                              <i class="fas fa-ban fa-lg" title="Disable"></i>
+                            </button></td>
+                            <td>
+                              <button class="icon-button edit-icon" title="edit user" onclick="location.href='edituser.html'"><i class="fas fa-edit"></i></button>
+                              <button class="icon-button delete-icon" title="delete user" onclick="confirmDeletion()"><i class="fas fa-trash-alt"></i></button>
+                              <script>
+                                  function confirmDeletion() {
+                                      if (confirm("Confirm deletion of user?")) {
+                                        // delete user logic 
+                                          console.log("User deleted");
+                                      }
+                                  }
+                              </script>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>WD201</td>
+                            <td>webdev_pro</td>
+                            <td>********</td>
+                            <td>Jane Smith</td>
+                            <td>jane.smith@email.com</td>
+                            <td>555-0201</td>
+                            <td>456 Oak Ave, Somewhere, USA</td>
+                            <td>2023-02-20</td>
+                            <td><button class="icon-button disable-icon" onclick="disableRow(this)">
+                              <i class="fas fa-ban fa-lg" title="Disable"></i>
+                            </button></td>
+                            <td>
+                              <button class="icon-button edit-icon" onclick="location.href='edituser.html'"><i class="fas fa-edit"></i></button>
+                              <button class="icon-button delete-icon" onclick="confirmDeletion()"><i class="fas fa-trash-alt"></i></button>
+                              <script>
+                                  function confirmDeletion() {
+                                      if (confirm("Confirm deletion of user?")) {
+                                        // delete user logic 
+                                          console.log("User deleted");
+                                      }
+                                  }
+                              </script>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>DS301</td>
+                            <td>data_scientist</td>
+                            <td>********</td>
+                            <td>Alex Johnson</td>
+                            <td>alex.johnson@email.com</td>
+                            <td>555-0301</td>
+                            <td>789 Pine Rd, Elsewhere, USA</td>
+                            <td>2023-03-10</td>
+                            <td><button class="icon-button disable-icon" onclick="disableRow(this)">
+                              <i class="fas fa-ban fa-lg" title="Disable"></i>
+                            </button></td>
+                            <td>
+                              <button class="icon-button edit-icon" onclick="location.href='edituser.html'"><i class="fas fa-edit"></i></button>
+                              <button class="icon-button delete-icon" onclick="confirmDeletion()"><i class="fas fa-trash-alt"></i></button>
+                              <script>
+                                  function confirmDeletion() {
+                                      if (confirm("Confirm deletion of user?")) {
+                                        // delete user logic 
+                                          console.log("User deleted");
+                                      }
+                                  }
+                              </script>
+                          </td>
+                        </tr>
+                    </table>
+            
+                </div>
+                
+                    <br><br><br><br>
+                    <footer class="mdl-mini-footer">
+                        <div class="mdl-mini-footer__left-section">
+                            <div class="mdl-logo" style="color: black;">TAMS Admin Dashboard</div>
+                            <ul class="mdl-mini-footer__link-list">
+                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Privacy & Terms</a></li>
+                            </ul>
+                        </div>
+                    </footer>
+              
+          
+        </main><script src="/js/script.js"></script>
+    </div>
+  
+    {% endblock %}

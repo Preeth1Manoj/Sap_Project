@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/regist.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form method="POST" action="/register" enctype="multipart/form-data" onsubmit="return myformvalfn(this)">
+            {{ form.hidden_tag() }}
+
+            <label for="{{ form.first_name.id }}">{{ form.first_name.label }}</label>
+            {{ form.first_name(class="form-control", placeholder="Enter your first name") }}
+            <p id="firstnameerror"></p>
+
+            <label for="{{ form.last_name.id }}">{{ form.last_name.label }}</label>
+            {{ form.last_name(class="form-control", placeholder="Enter your last name") }}
+            <p id="lastnameerror"></p>
+
+            <label for="{{ form.email.id }}">{{ form.email.label }}</label>
+            {{ form.email(class="form-control", placeholder="Enter your email") }}
+            <p id="emailerror"></p>
+
+            <label for="{{ form.phone.id }}">{{ form.phone.label }}</label>
+            {{ form.phone(class="form-control", placeholder="Enter your phone number") }}
+            <p id="phonenumbererror"></p>
+
+            <label for="{{ form.username.id }}">{{ form.username.label }}</label>
+              {{ form.username(class="form-control", placeholder="Enter your username") }}
+                  <p id="usernameerror"></p>
+
+            <label for="{{ form.password.id }}">{{ form.password.label }}</label>
+            {{ form.password(class="form-control", placeholder="Enter your password") }}
+            <p id="passworderror"></p>
+
+            <label for="{{ form.confirm_password.id }}">{{ form.confirm_password.label }}</label>
+            {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}
+            <p id="cnfpassworderror"></p>
+
+            <label for="{{ form.age.id }}">{{ form.age.label }}</label>
+            {{ form.age(class="form-control", placeholder="Enter your age", min="1", max="120") }}
+            <p id="ageerror"></p>
+
+            <label for="{{ form.passout_year.id }}">{{ form.passout_year.label }}</label>
+            {{ form.passout_year(class="form-control", placeholder="Enter your passout year", min="1900", max="2099") }}
+            <p id="passoutyearerror"></p>
+<br>
+
+                <label for="{{ form.qualification_id.id }}">{{ form.qualification_id.label }}</label>
+                <select name="{{ form.qualification_id.name }}" id="{{ form.qualification_id.id }}" class="form-control">
+                    <option value="" disabled selected>Select your qualification</option>
+                    {% for qualification in form.qualification_id.choices %}
+                        <option value="{{ qualification[0] }}">{{ qualification[1] }}</option>
+                    {% endfor %}
+                </select>
+
+
+
+            <label for="{{ form.address.id }}">{{ form.address.label }}</label>
+            {{ form.address(class="form-control", rows="4") }}
+            <p id="addresserror"></p>
+
+ 
+            <input type="submit" value="Register" class="btn btn-primary">
+            <input type="reset" value="Clear" id="resetButton" class="btn btn-secondary">
+        </form>
+    </div>
+
+    <!-- Link to JavaScript -->
+    <script src="{{ url_for('static', filename='js/registration.js') }}"></script>
+</body>
+</html>

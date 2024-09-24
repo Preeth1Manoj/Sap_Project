@@ -1,0 +1,145 @@
+/* Container styling */
+.form-container {
+    background-color: #f6f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 26px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Input field styling */
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="file"],
+input[type="time"],
+select.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Specific styling for select dropdowns */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 30px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.input-group input,
+.input-group select {
+    padding-left: 35px;
+}
+
+/* Flexbox container for name fields */
+.name-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-group .input-group {
+    width: 48%;
+}
+
+/* Submit and Reset buttons styling */
+input[type="submit"], 
+input[type="reset"] {
+    width: 40%;
+    padding: 10px;
+    margin: 10px 4%;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Submit button specific styling */
+input[type="submit"] {
+    background-color: #28a745;
+}
+
+/* Reset button specific styling */
+input[type="reset"] {
+    background-color: #dc3545;
+}
+
+/* Button hover effects */
+input[type="submit"]:hover, 
+input[type="reset"]:hover {
+    opacity: 0.9;
+}
+
+/* Error message styling */
+.input-group p {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+/* Hover and focus effects for inputs and selects */
+input:hover,
+select:hover {
+    border-color: #888;
+}
+
+input:focus,
+select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .name-group {
+        flex-direction: column;
+    }
+
+    .name-group .input-group {
+        width: 100%;
+    }
+
+    input[type="submit"], 
+    input[type="reset"] {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

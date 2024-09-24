@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <section class="activity-feed">
+                    <h4><b>ADMIN / Account Settings</b></h4>
+                    <div class="button-container">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="location.href='admin1.html'">
+                        Back to home
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Profile Section -->
+                <section class="profile-section">
+                    <h5><b>My Profile</b></h5>
+                    <form action="/updateProfile" method="POST">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="username" value="Admin" readonly>
+                            <label class="mdl-textfield__label" for="username">Username</label>
+                        </div>
+                        <br>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="email" id="email" value="admin@example.com">
+                            <label class="mdl-textfield__label" for="email">Email</label>
+                        </div>
+<br>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit">
+                            Save Profile
+                        </button>
+                    </form>
+                </section>
+
+              
+
+                <!-- Change Password Section -->
+                <section class="change-password-section">
+                    <h5><b>Change Password</b></h5>
+                    <form action="/changePassword" method="POST">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" id="current-password">
+                            <label class="mdl-textfield__label" for="current-password">Current Password</label>
+                        </div><br>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" id="new-password">
+                            <label class="mdl-textfield__label" for="new-password">New Password</label>
+                        </div><br>
+
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" id="confirm-password">
+                            <label class="mdl-textfield__label" for="confirm-password">Confirm New Password</label>
+                        </div>
+                         <br>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" type="submit">
+                            Change Password
+                        </button>
+                    </form>
+                </section>
+              
+                <br><br><br><br>  <hr>
+                <footer class="mdl-mini-footer">
+                    <div class="mdl-mini-footer__left-section">
+                        <div class="mdl-logo" style="color: black;">TAMS Admin Dashboard</div>
+                        <ul class="mdl-mini-footer__link-list">
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="/js/script.js"></script>
+    {% endblock %}

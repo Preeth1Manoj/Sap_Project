@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Learning platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/f17626030c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Homepage.css') }}">
+</head>
+<body>
+  <div class="main-content">
+          <div class="b-example-divider">
+              <header class="p-3 header">
+                  <div class="container-fluid">
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                          <!-- <img src="{{ url_for('static', filename='img/SAP.png') }}" alt="Insert logo" width="150px" height="70px" class="float-start"> -->
+                                <h2 class="float-start ms-3 ps-3"><i class="fas fa-graduation-cap fa-lg"></i>  SAP</h2>
+                      
+                      <ul class="nav col-12 col-lg-auto ms-lg-auto me-4 mb-2 justify-content-center mb-md-0">
+                        <li><a href="#about-us" class="nav-link px-2 text-light">About Us</a></li>
+                        <li><a href="/course" class="nav-link px-2 text-light">Courses</a></li>
+                        <li><a href="/FAQ" class="nav-link px-2 text-light">FAQs</a></li>
+                      </ul>
+              
+                     
+                      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex" role="search" action="{{ url_for('search') }}" method="get">
+                        <input type="search" name="query" class="form-control form-control-dark text-bg-light" placeholder="Search..." aria-label="Search">
+                        <button type="submit" class="btn btn-light mx-2">Search</button>
+                      </form>
+                      <div class="text-end">
+                        <a href="/login"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+                        <a href="/register"><button type="button" class="btn btn-warning">Sign-up</button></a></br></br>
+                      </div>
+                    </div>
+                  </div>
+              </header>
+          </div>
+          <div class="Marquee-text">
+            <h5><marquee>New Courses updated! </marquee></h5>
+          </div>
+            <div class="container-fluid mt-0 mb-3">
+              <div class="row border-0">
+                <div class="img">
+                  <img src="{{ url_for('static', filename='images/pixelcut-export (2).png') }}"  width="900px">
+                </div>
+                <div class="col border-0 d-flex align-items-center ms-0 mb-0 mb-lg-0 fs-1  text-decoration-none"> 
+                  <h1 class="bluetheme display-1 fw-bold">Ignite Curiosity,<br>
+                  Inspire Brilliance!</h1>
+                </div>
+              </div>
+
+              
+
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="{{ url_for('static', filename='images/img1.jpg') }}" class="d-block w-100" alt="First Slide Image">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Empower Your Learning Journey</h5>
+                        <p>Discover a world of knowledge with expert-led courses in tech, business, creativity, and more. Learn at your own pace from anywhere in the world.</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{ url_for('static', filename='images/img3.jpg') }}" class="d-block w-100" alt="Second Slide Image">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5> <strong> Expert Instructors, Quality Courses </strong></h5>
+                        <p>Our courses are taught by industry professionals with real-world experience. Gain practical skills that set you apart.</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="{{ url_for('static', filename='images/img2.jpg') }}" class="d-block w-100" alt="Third Slide Image">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Learn. Achieve. Succeed.</h5>
+                        <p>With personalized learning paths and curated content, we help you reach your goals faster and more effectively. Start your success story today.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              
+                <!-- Bootstrap JS -->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+              <div id="about-us" class="aboutus container-fluid bg-light col border-0 p-3 ">
+                <h2 class="display-5 fw-bold d-flex align-items-center justify-content-center pb-2 text-decoration-underline">About Us</h2><br>
+                <p class="fs-4 ms-5 me-5">Welcome to SAP, your go-to destination for finding the perfect online courses to fuel your passion, advance your career, or explore new interests!</p>
+                <div class="d-flex justify-content-between mx-5 mb-4">
+                  <div class="sub container mt-3 mb-3 mx-3 p-3">
+                    <h3 class="bluetheme">Who We Are</h3><br>
+                    <p class="ms-2 me-2">We are a team of dedicated education enthusiasts, tech experts, and lifelong learners who believe that quality education should be accessible to everyone, everywhere.
+                      With a passion for innovation and a commitment to excellence, we’ve created a platform that brings together diverse courses across various disciplines, ensuring that you have all the tools you need to make informed decisions about your learning journey.</p>
+                  </div>
+                  <div class="sub container mt-3 mb-3 mx-3 p-3">
+                    <h3 class="bluetheme">What We Offer</h3><br>
+                    <p class="ms-2 me-2">Extensive Course Listings
+                      Advanced Search & Filters
+                      Expert Reviews & Ratings
+                      Personalized Recommendations
+                      Seamless Enrollment.We are committed to empower your journey with continuous learning and skills development.</p>
+                  </div>
+                  <div class="sub container mt-3 mb-3 mx-3 p-3">
+                    <h3 class="bluetheme">Who We Are</h3><br>
+                    <p class="ms-2 me-2">We are committed to providing you with the best resources to help you succeed. Whether you're looking to upskill, reskill, or simply explore new subjects, our platform is designed to make your learning experience as rewarding and efficient as possible. We partner with reputable course providers to ensure that you have access to high-quality content that meets your educational goals.t</p>
+                  </div>
+                </div>
+            </div>
+            <a href="/contactus" class="sticky-button">
+              <i class="fa fa-envelope"></i> Contact Us
+          </a>
+            <div class="container-fluid col border-0 p-3 mt-5 ">
+              <h2 class="bluetheme display-5 fw-bold d-flex align-items-left mx-5 pb-2 text-decoration-underline">Recent Courses</h2><br>
+              <div class="d-flex justify-content-between mx-5 mb-4">
+                  <div class="course_container">
+                      {% for course in recent_courses %}
+                      <div class="sub container mt-3 mb-3 mx-3 p-3 bg-light">
+                          <div class="container-fluid border-0 mx-0">
+                              <img width="200" src="{{ url_for('course_image', course_id=course.course_id) }}" alt="{{ course.course_name }}" class="top-image">
+                          </div>
+                          <h3 class="bluetheme">{{ course.course_name }}</h3><br>
+                          <hr>
+                          <p class="ms-2 me-2">{{ course.description }}</p>
+                          <hr>
+                          <div class="coursedet">
+                              <nav>
+                                  <ul>
+                                      <li>Duration: {{ course.duration }}</li>
+                                      <li>Fees: Rs. {{ course.fees }}/-</li>
+                                      <li>Qualifications: {{ course.qualification.qualification if course.qualification else 'Not specified' }}</li>
+                                      <li>Modules: {{ course.modules }} modules</li><br><br>
+                                      <a href="/enquirenow"><button type="button" class="btn btn-danger">Enquire Now</button></a>
+                                  </ul>
+                              </nav>
+                          </div>
+                      </div>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+         
+          <button id="sticky-btn" class="sticky-btn" style="display: none;">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+
+          <footer class="footer" style="background-color: #333; color: white;">
+            <div class="container">
+              <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                  <a href="/" class="mb-3 me-2 mb-md-0 text-white text-decoration-none lh-1">
+                    <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                  </a>
+                  <span class="mb-3 mb-md-0 text-white">© 2024 SAP Learning Company, Inc</span>
+                </div>
+              
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                  <li class="ms-3"><a class="text-white" href="https://x.com/?lang=en"><i class="fab fa-twitter"></i></a></li>
+                  <li class="ms-3"><a class="text-white" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+                  <li class="ms-3"><a class="text-white" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                </ul>
+              </footer>
+            </div>
+          </footer>
+          
+
+  
+</div> 
+<!--Javascript-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>   
+<script>window.onscroll = function() {
+  var button = document.querySelector('.sticky-button');
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+      button.style.display = "block"; 
+  } else {
+      button.style.display = "none"; 
+  }
+}
+;
+
+</script>
+<script>const stickyBtn = document.getElementById('sticky-btn');
+
+  // Show the button when scrolling down
+  window.addEventListener('scroll', () => {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+          stickyBtn.style.display = 'block';
+      } else {
+          stickyBtn.style.display = 'none';
+      }
+  });
+  
+  // Smooth scroll to the top when the button is clicked
+  stickyBtn.addEventListener('click', () => {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });</script>
+</body>
+</html>

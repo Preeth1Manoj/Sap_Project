@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/viewenquiryuserdashboard.css') }}">
+    <script src="https://kit.fontawesome.com/f17626030c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <!-- <img src="{{ url_for('static', filename='images/samplelogo.jpg') }}" alt="Insert logo" height="100px" width="100px"> -->
+            <h2>  <i class="fas fa-graduation-cap"></i> SAP</h2>
+        </div>
+        <div class="user-info">
+            <img src="{{ url_for('static', filename='images/user pfp.jpg') }}" alt="User Image">
+            <p>{{current_user.first_name}}{{ current_user.last_name }}<br><span>User</span></p>
+        </div>
+        <ul class="menu">
+            <li><a href="/myuserdashboard" ><i class="fa-solid fa-gauge-high fa-lg"></i> Dashboard</a></li>
+            <li><a href="/editprofile"><i class="fa-solid fa-user-pen fa-lg" style="color: #001842;"></i> Edit Profile</a></li>
+            <li><a href="/changepassword"><i class="fa-solid fa-lock fa-lg" style="color: #031430;"></i> Change Password</a></li>
+            <li><a href="/viewenquiriesuser" class="active"><i class="fa-solid fa-clipboard-question fa-lg" style="color: #020a17;"></i> View Enquiries</a></li>
+            <li><a href="/logout"><i class="fa-solid fa-right-from-bracket fa-lg" style="color: #06142d;"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-nav">
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="nav-icons">
+                <a href="/userdashboard">Home</a>
+                <a href="/userdashboard">About Us</a>
+                <a href="/course">Course</a>
+                <div class="user-profile">
+                    <img src="{{ url_for('static', filename='images/user pfp.jpg') }}" alt="Barry Allen">
+                    <p>{{current_user.first_name}}</p>
+                </div>
+            </div>
+        </div>
+
+
+                    <div class="bodycontent">
+                        <h1>My Enquiries</h1>
+            <br>
+                        {% if enquiries %}
+                        <table class="enquiry-table">
+                            <thead>
+                                <tr>
+                                    <th>Enquiry ID</th>
+                                    <th>Course</th>
+                                    <th>Enquiry Text</th>
+                                    <th>Response</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for enquiry in enquiries %}
+                                <tr>
+                                    <td>{{ enquiry.enquiry_id }}</td>
+                                    <td>{{ enquiry.course.course_name }}</td>
+                                    <td>{{ enquiry.enquiry_text }}</td>
+                                    <td>{{ enquiry.response or 'No response' }}</td>
+                                    <td>{{ enquiry.status.enquiry_status }}</td>
+                                    <td>{{ enquiry.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <p>No enquiries found.</p>
+                        {% endif %}
+                        <div class="add-enquiry-btn">
+                           <a href="/course"> <button type="button"  class="btn btn-primary">Add new Enquiry</button></a>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</body>
+</html>
